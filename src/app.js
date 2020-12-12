@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { addExpense, editExpense } from './actions/expenses';
-import { setTextFilter } from './actions/filters';
+import { addExpense } from './actions/expenses';
 import getVisibleExpenses from './selectors/expenses';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
@@ -18,17 +18,25 @@ store.subscribe(() => {
 const expense = store.dispatch(addExpense({
   description: 'Water bill',
   amount: 3000,
-  createdAt: 83495349
+  createdAt: 1035942535349
+}));
+
+store.dispatch(addExpense({
+  description: 'Rent bill',
+  amount: 343,
+  createdAt: 1215942535349
 }));
 
 store.dispatch(addExpense({
   description: 'Gas bill',
   amount: 5500,
-  createdAt: 532790
+  createdAt: 915942535349
 }));
 
-// store.dispatch(editExpense(expense.expense.id, { amount: 30 }));
+const jsx = (
+  <Provider store={store} >
+    <AppRouter />
+  </Provider>
+);
 
-store.dispatch(setTextFilter('water'));
-
-ReactDOM.render(<AppRouter />, document.getElementById('app'));
+ReactDOM.render(jsx, document.getElementById('app'));
