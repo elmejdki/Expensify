@@ -6,10 +6,10 @@ import 'react-dates/lib/css/_datepicker.css';
 
 export default class ExpenseForm extends Component {
   state = {
-    description: '',
-    note: '',
-    amount: '',
-    createdAt: moment(),
+    description: this.props.description || '',
+    note: this.props.note || '',
+    amount: this.props.amount ? this.props.amount / 100 + '' : '',
+    createdAt: this.props.createdAt ? moment(this.props.createdAt) : moment(),
     calendarFocused: false,
     state: ''
   }
@@ -54,7 +54,6 @@ export default class ExpenseForm extends Component {
       this.setState(() => ({
         error: ''
       }));
-      console.log('submitted');
       const { description, note, amount, createdAt } = this.state;
       this.props.onSubmit({
         description,
@@ -97,7 +96,11 @@ export default class ExpenseForm extends Component {
             placeholder="Add a note for your expense (optional)"
           >
           </textarea>
-          <button>Add Expense</button>
+          <button>
+            {
+              this.props.isEdit ? 'Edit Expense' : 'Add Expense'
+            }
+          </button>
         </form>
       </div>
     );
