@@ -9,9 +9,6 @@ const Header = () => (
     </NavLink> - 
     <NavLink to="/create" activeClassName="is-active" >
       Create Page
-    </NavLink> - 
-    <NavLink to="/help" activeClassName="is-active" >
-      Help Page
     </NavLink>
   </div>
 );

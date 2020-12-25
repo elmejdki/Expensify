@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Header correctly 1`] = `
+<div>
+  <h1>
+    Exspensify
+  </h1>
+  <NavLink
+    activeClassName="is-active"
+    exact={true}
+    to="/"
+  >
+    DashBoard
+  </NavLink>
+   -
+  <NavLink
+    activeClassName="is-active"
+    to="/create"
+  >
+    Create Page
+  </NavLink>
+</div>
+`;
