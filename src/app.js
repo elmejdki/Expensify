@@ -9,28 +9,31 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'normalize.css/normalize.css';
 import './styles/style.scss';
 
+import moment from 'moment';
+
 const store = configureStore();
 
-const expense = store.dispatch(addExpense({
+store.dispatch(addExpense({
   description: 'Water bill',
   amount: 3000,
-  createdAt: 1035942535349
+  createdAt: moment().add(5, 'days').valueOf()
 }));
 
 store.dispatch(addExpense({
   description: 'Rent bill',
   amount: 343,
-  createdAt: 1215942535349
+  createdAt: moment().valueOf()
 }));
 
 store.dispatch(addExpense({
   description: 'Gas bill',
   amount: 5500,
-  createdAt: 915942535349
+  createdAt: moment().subtract(2, 'days').valueOf()
 }));
 
 
 const { expenses, filters } = store.getState();
+
 console.log(getVisibleExpenses(expenses, filters));
 
 const jsx = (
