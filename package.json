@@ -4,8 +4,7 @@
   "description": "Expensify app",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack",
-    "build:prod": "webpack --env production",
+    "build": "webpack --env production",
     "serve": "webpack serve",
     "test": "jest"
   },
@@ -14,6 +13,7 @@
   "dependencies": {
     "moment": "^2.29.1",
     "normalize.css": "^8.0.1",
+    "numeral": "^2.0.6",
     "react": "^17.0.1",
     "react-dates": "^21.8.0",
     "react-dom": "^17.0.1",
