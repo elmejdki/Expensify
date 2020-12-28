@@ -17,19 +17,25 @@ class ExpenseListFilters extends Component {
     this.setState(() => ({ calendarFocused }));
   }
 
+  getDateId = (date) => {
+    return date ? date.format('Do MMMM, YYYY') : 'empty';
+  }
+
   render() {
     const { filters, setTextFilter, sortByAmount, sortByDate } = this.props;
+    const { text, sortBy, endDate, startDate } = filters;
+
     return (
       <div>
         <input
           type="text"
-          value={filters.text}
+          value={text}
           onChange={(e) => {
             setTextFilter(e.target.value);
           }}
         />
         <select
-          value={filters.sortBy}
+          value={sortBy}
           onChange={(e) => {
             if(e.target.value === 'amount') {
               sortByAmount();
@@ -42,10 +48,10 @@ class ExpenseListFilters extends Component {
           <option value="amount">Amount</option>
         </select>
         <DateRangePicker
-          startDate={filters.startDate}
-          startDateId={filters.startDate.format('Do MMMM, YYYY')}
-          endDate={filters.endDate}
-          endDateId={filters.endDate.format('Do MMMM, YYYY')}
+          startDate={startDate}
+          startDateId={this.getDateId(startDate)}
+          endDate={endDate}
+          endDateId={this.getDateId(endDate)}
           onDatesChange={this.onDatesChange}
           focusedInput={this.state.calendarFocused}
           onFocusChange={this.onFocusChange}
