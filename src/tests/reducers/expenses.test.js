@@ -1,5 +1,5 @@
 import expensesReducer from '../../reducers/expenses';
-import initState from '../fixtures/expenses';
+import expenses from '../fixtures/expenses';
 
 it('should set default state', () => {
   const action = {
@@ -25,10 +25,10 @@ it('should add expense to state', () => {
     expense,
   }
 
-  const state = expensesReducer(initState, action);
+  const state = expensesReducer(expenses, action);
 
   expect(state).toEqual([
-    ...initState,
+    ...expenses,
     expense
   ])
 });
@@ -39,11 +39,11 @@ it('should remove expense from state', () => {
     id: '2',
   }
 
-  const state = expensesReducer(initState, action);
+  const state = expensesReducer(expenses, action);
 
   expect(state).toEqual([
-    initState[0],
-    initState[2],
+    expenses[0],
+    expenses[2],
   ])
 });
 
@@ -53,9 +53,9 @@ it('should not remove expense from state', () => {
     id: '-2',
   }
 
-  const state = expensesReducer(initState, action);
+  const state = expensesReducer(expenses, action);
 
-  expect(state).toEqual(initState);
+  expect(state).toEqual(expenses);
 });
 
 it('should edit expense in state', () => {
@@ -73,15 +73,15 @@ it('should edit expense in state', () => {
     updates
   }
 
-  const state = expensesReducer(initState, action);
+  const state = expensesReducer(expenses, action);
 
   expect(state).toEqual([
-    initState[0],
+    expenses[0],
     {
       id,
       ...updates,
     },
-    initState[2],
+    expenses[2],
   ])
 });
 
@@ -100,7 +100,18 @@ it('should not edit expense in state', () => {
     updates
   }
 
-  const state = expensesReducer(initState, action);
+  const state = expensesReducer(expenses, action);
 
-  expect(state).toEqual(initState);
+  expect(state).toEqual(expenses);
+});
+
+it('should set expenses', () => {
+  const action = {
+    type: 'SET_EXPENSES',
+    expenses
+  }
+
+  const state = expensesReducer({}, action);
+
+  expect(state).toEqual(expenses);
 });
