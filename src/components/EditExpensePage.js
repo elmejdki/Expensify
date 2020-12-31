@@ -12,14 +12,14 @@ export const EditExpensePage = (props) => {
         {...props.expense}
         onSubmit={(expense) => {
           props.startEditExpense(id, expense);
-          props.history.push('/');
+          props.history.push('/dashboard');
         }}
         isEdit={true}
       />
       <button
         onClick={() => {
           props.startRemoveExpense(id);
-          props.history.push('/');
+          props.history.push('/dashboard');
         }}
       >
         Remove

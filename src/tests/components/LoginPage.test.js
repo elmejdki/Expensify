@@ -1,11 +1,11 @@
 import ShallowRenderer from 'react-test-renderer/shallow';
 import React from 'react';
-import { Header } from '../../components/Header';
+import { LoginPage } from '../../components/LoginPage';
 
 const renderer = new ShallowRenderer();
 
-it('should render Header correctly', () => {
-  renderer.render(<Header />);
+it('should render LoginPage correctly', () => {
+  renderer.render(<LoginPage />);
 
   expect(renderer.getRenderOutput()).toMatchSnapshot();
 });
