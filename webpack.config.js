@@ -21,7 +21,7 @@ module.exports = (env) => {
     },
     devServer: {
       contentBase: path.join(__dirname, 'public'),
-      port: 3030,
+      port: 3000,
       historyApiFallback: true
     },
     mode: isProduction ? 'production' : 'development',
