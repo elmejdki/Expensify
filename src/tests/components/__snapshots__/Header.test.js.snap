@@ -1,26 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render Header correctly 1`] = `
-<div>
-  <h1>
-    Exspensify
-  </h1>
-  <NavLink
-    activeClassName="is-active"
-    exact={true}
-    to="/dashboard"
+<div
+  className="header"
+>
+  <div
+    className="content-container"
   >
-    DashBoard
-  </NavLink>
-   -
-  <NavLink
-    activeClassName="is-active"
-    to="/create"
-  >
-    Create Page
-  </NavLink>
-  <button>
-    Log Out
-  </button>
+    <div
+      className="header__content"
+    >
+      <Link
+        className="header__title"
+        to="/dashboard"
+      >
+        <h1>
+          Exspensify
+        </h1>
+      </Link>
+      <button
+        className="button button--link"
+      >
+        Log Out
+      </button>
+    </div>
+  </div>
 </div>
 `;
